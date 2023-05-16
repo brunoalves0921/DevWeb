@@ -1,0 +1,26 @@
+.box-row {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid red
+}
+.box-col {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    height: 100px;
+}
+.box-row-reverse {
+    display: flex;
+    flex-direction: row-reverse;
+    border: 1px solid red
+}
+.box-column-reverse {
+    display: flex;
+    flex-direction: column-reverse;
+    border: 1px solid red;
+    height: 100px;
+}
+
+.item {
+    border: 1px solid black;
+}
