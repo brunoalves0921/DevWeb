@@ -1,0 +1,51 @@
+O uso de Contextos no React é uma solução para o problema de "PROPS DRILLING", que ocorre quando precisamos passar dados de um componente pai para um componente filho 
+distante na hierarquia, passando esses dados por vários componentes intermediários.
+
+Em vez de passar manualmente as propriedades através de todos os componentes intermediários, posso usar o Contexto para compartilhar os dados diretamente entre o componente pai e o componente filho distante.
+
+No React, posso criar um Contexto usando a função createContext. Vou usar um exemplo em que temos um componente UserContextProvider que cria e fornece o contexto do usuário para todos os componentes filhos:
+
+import React, { createContext, useState } from 'react';
+
+// Cria o contexto do usuário
+const UserContext = createContext();
+
+// Componente provedor do contexto
+const UserContextProvider = ({ children }) => {
+  const [user, setUser] = useState('John');
+
+  return (
+    <UserContext.Provider value={user}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+
+export { UserContext, UserContextProvider };
+
+Aqui, estou criando o contexto do usuário usando createContext e, em seguida, fornecendo-o para todos os componentes filhos usando o componente UserContext.Provider. O valor do contexto é definido como user, que é um 
+estado criado com o useState, neste caso, o valor inicial é 'John'.
+
+Agora, no componente D, que está distante do componente A, posso acessar o valor do contexto sem precisar passá-lo explicitamente pelos componentes intermediários. Para isso, uso o hook useContext fornecendo o contexto UserContext:
+
+import React, { useContext } from 'react';
+import { UserContext } from './UserContextProvider';
+
+// Componente D
+const ComponentD = () => {
+  const user = useContext(UserContext);
+
+  return (
+    <div>
+      <h1>Component D</h1>
+      <p>Olá, {user}!</p>
+    </div>
+  );
+};
+
+export default ComponentD;
+
+
+Dessa forma, o componente D pode acessar diretamente o valor do contexto do usuário usando useContext(UserContext). Isso evita a necessidade de passar a propriedade do componente A para B, depois para C e, finalmente, para D.
+
+Resumindo, o uso de Contextos no React resolve o problema de "PROPS DRILLING" ao permitir que os componentes acessem os dados compartilhados sem a necessidade de passá-los explicitamente por todos os componentes intermediários.
