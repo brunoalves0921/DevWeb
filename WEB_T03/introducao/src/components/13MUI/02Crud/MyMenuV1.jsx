@@ -6,6 +6,7 @@ import { useState } from "react"
 const MyMenu = () => {
 
     const [anchorElProfessor,setAnchorElProfessor] = useState(null)
+    const [anchorElAluno,setAnchorElAluno] = useState(null)
     
     const handleOpenAnchorElProfessor = (event) => {
         setAnchorElProfessor(event.currentTarget)
@@ -13,6 +14,14 @@ const MyMenu = () => {
 
     const handleCloseAnchorElProfessor = () => {
         setAnchorElProfessor(null)
+    }
+
+    const handleOpenAnchorElAluno = (event) => {
+        setAnchorElAluno(event.currentTarget)
+    }
+
+    const handleCloseAnchorElAluno = () => {
+        setAnchorElAluno(null)
     }
 
     function dropProfMenu() {
