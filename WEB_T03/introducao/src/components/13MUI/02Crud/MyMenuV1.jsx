@@ -57,6 +57,46 @@ const MyMenu = () => {
         )
     }
 
+    function dropAlunoMenu() {
+        return (
+            <Box>
+                <Button
+                    sx={{ color: "white", my: 2 }}
+                    onClick={handleOpenAnchorElAluno}
+                >
+                    Alunos
+                </Button>
+                <Menu
+                    anchorEl={anchorElAluno}
+                    open={Boolean(anchorElAluno)}
+                    onClose={handleCloseAnchorElAluno}
+                >
+                    <MenuItem
+                        onClick={handleCloseAnchorElAluno}
+                        component={Link}
+                        to="cadastrarAluno"
+                    >
+                        Cadastrar
+                    </MenuItem>
+                    <MenuItem
+                            onClick={handleCloseAnchorElAluno}
+                            component={Link}
+                            to="listarAluno"
+                    >
+                        Listar
+                    </MenuItem>
+                    {/*  adiciona o item de menu para listar os alunos aprovados */}
+                    <MenuItem
+                            onClick={handleCloseAnchorElAluno}
+                            component={Link}
+                            to="listarAprovado"
+                    >
+                        Listar Aprovados
+                    </MenuItem>
+                </Menu>
+            </Box>
+        )
+    }
     return (
         <AppBar position="static">
             <Container>
@@ -79,11 +119,7 @@ const MyMenu = () => {
 
                     <Box sx={{ ml: 3, width: "100%", display: "flex", justifyContent: "flex-end" }}>
                         {dropProfMenu()}
-                        <Button
-                            sx={{ color: "white", my: 2 }}
-                        >
-                            Alunos
-                        </Button>
+                        {dropAlunoMenu()}
                         <Button
                             sx={{ color: "white", my: 2 }}
                         >

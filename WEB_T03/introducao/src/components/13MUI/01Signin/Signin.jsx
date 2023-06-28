@@ -23,10 +23,10 @@ const Signin = () => {
                     fullWidth
 
 
-                    label="Endereço de e-mail"
-                    id="email"
-                    name="email"
-                    type="email"
+                    label="User"
+                    id="user"
+                    name="user"
+                    type="user"
 
                 />
 
@@ -36,8 +36,8 @@ const Signin = () => {
                     fullWidth
 
 
-                    label="Senha"
-                    id="password"
+                    label="pass"
+                    id="pass"
                     name="password"
                     type="password"
 
